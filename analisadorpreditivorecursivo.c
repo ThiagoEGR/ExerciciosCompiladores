@@ -56,7 +56,7 @@ void error(struct token tk){
 
 void fpgm()
 {
-     tk = next();
+     
      flsent();
      if (tk.categ == pt)
      {
@@ -97,6 +97,7 @@ void flsentr()
 
 void fsent()
 {
+	tk = next();
 	if (tk.categ == se)
 	{
 		next();
@@ -170,7 +171,7 @@ void fsenao()
 	{
 		next();
 		flsent();
-		if(tk.categ = fim)
+		if(tk.categ == fim)
 		{
 			next();
 			return;
@@ -252,7 +253,7 @@ void fea()
 
 void fear()
 {
-	if(tk.categ = opa)
+	if(tk.categ == opa)
 	{
 		next();
 		fta();
