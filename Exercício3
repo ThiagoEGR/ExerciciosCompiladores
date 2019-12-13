@@ -1,3 +1,15 @@
+double fEa (){
+      double Tarvh, Fav, Tav, Tarvs;
+      Fav = fFa();
+      Tarvh = Fav;
+      Tarvs = fTar(Tarvh);
+      Tav = Tarvs;
+      return Tav;
+   
+
+
+
+
 double fEar ( double Earvh ){
       double Ear1vh, Tav, Earvs, Ear1vs;
       if ( tk.cat == mais ){
@@ -22,6 +34,15 @@ double fEar ( double Earvh ){
      return earvs;
 }
 
+
+double fTa (){
+      double Tarvh, Fav, Tav, Tarvs;
+      Fav = fFa();
+      Tarvh = Fav;
+      Tarvs = fTar(Tarvh);
+      Tav = Tarvs;
+      return Tav;
+   
 double fTar ( double Tarvh ){
   double Tar1vh, Fav, Tarvs, Tar1vs;
       if ( tk.cat == vezes ){
