@@ -33,6 +33,28 @@ Ta = Ta1 'opm' Pa        {Nterm Ta; Ta.tp = Bool; Ta.nome = geraTemp();
                                throw erro (" 'opm' com operandos booleanos", opm);}
 Ta = Pa                  {Nterm Ta = Pa}
 
+Pa = Fa ** Pa            {Nterm Pa, Pa.nome = geraTemp(), Pa.tp = Undef;
+                         if ( Fa.tp == Pa1.tp)
+                               Pa.tp = Fa.tp;
+                         else if ( Pa1.tp == int ) 
+                               Pa.tp = Fa.tp;
+                         else:
+                               throw erro( " '**' com operandos incompatíveis ", exp );
+                         if ( Pa.tp != int || Pa.tp != float )
+                              throw erro ( " '**' Com operandos incompatíveis ", exp );
+Pa = Fa                  {Nterm Pa = Fa}
+
+Fa = '(' Eb ')'          {Nterm Fa = Eb}
+Fa = 'id'                {Nterm Fa;
+                          if ((Fa.tp = verTs(id.lex)) == Undef)
+                               throw erro(" 'id' não definido ", id);
+                          fa.nome = id.lex;}
+Fa = 'cteI'              {Nterm Fa; Fa.tp = Int;
+                          Fa.nome = adTctei(cteI.lex);}
+Fa = 'cteF'               {Nterm Fa; Fa.tp = Float;
+                          Fa.nome = adTcteF(cteF.lex);}
+Fa = 'verd'               {Nterm Fa; Fa.tp = Bool; Fa.nome = _Verd;}
+Fa = 'falso'              {Nterm Fa; Fa.tp = Bool; Fa.nome = _Falso;}
 
 
 
