@@ -1,17 +1,40 @@
 Eb = Eb 'ou' Tb          {Nterm Eb; Eb.tp = Bool; Eb.nome = geraTemp();
-                          if ( Eb.tp != Bool || Tb.tp != Bool )
+                         if ( Eb.tp != Bool || Tb.tp != Bool )
                                throw erro (" 'ou' com operandos não booleanos", ou);}
 Eb = tb                  {Nterm Eb = Tb}
 
-Tb = Tb 'e' Fb          {Nterm Tb; Tb.tp = Bool; Tb.nome = geraTemp();
-                          if ( Tb.tp != Bool || Fb.tp != Bool)
+Tb = Tb 'e' Fb           {Nterm Tb; Tb.tp = Bool; Tb.nome = geraTemp();
+                         if ( Tb.tp != Bool || Fb.tp != Bool)
                                throw erro (" 'e' com operandos não booleanos", e);}
 Tb = Fb                  {Nterm Tb = fb}
 
-Fb = 'not' Fb           {Nterm Fb; Fb.tp = Bool; Fb.nome = geraTemp();
-                          if ( Fb1.tp != Bool )
+Fb = 'not' Fb1           {Nterm Fb; Fb.tp = Bool; Fb.nome = geraTemp();
+                         if ( Fb1.tp != Bool )
                                throw erro (" 'not' com operando não booleano", not);}
-Fb = Er                 {Nterm Fb = Er}
+Fb = Er                  {Nterm Fb = Er}
+
+Er = Tr 'relg' Tr1       {Nterm Er; Er.tp = Bool; Er.nome = geraTemp();
+                         if ( Tr.tp == Bool || Tr1.tp == Bool )
+                               throw erro (" 'relg' com operandos booleanos", relg);}
+Er = Tr                  {Nterm Er = Tr}
+
+Tr = Ea 'relig' Ea1      {Nterm Tr; Tr.tp = Bool; Tr.nome = geraTemp();
+                         if ( Ea.tp != Ea1.tp )
+                               throw erro (" 'relig' com operandos diferentes", relig);}
+Tr = Ea                  {Nterm Tr = Ea}
+
+Ea = Ea1 'opa' Ta        {Nterm Ea; Ea.tp = Bool; Ea.nome = geraTemp();
+                         if ( Ea1.tp == Bool || Ta.tp == Bool )
+                               throw erro (" 'opa' com operandos booleanos", opa);}
+Ea = Ta                  {Nterm Ea = Ta}
+
+Ta = Ta1 'opm' Pa        {Nterm Ta; Ta.tp = Bool; Ta.nome = geraTemp();
+                         if ( Ta1.tp == Bool || Pa.tp == Bool )
+                               throw erro (" 'opm' com operandos booleanos", opm);}
+Ta = Pa                  {Nterm Ta = Pa}
+
+
+
 
 
 
