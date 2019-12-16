@@ -1,0 +1,18 @@
+Eb = Eb 'ou' Tb          {Nterm Eb; Eb.tp = Bool; Eb.nome = geraTemp();
+                          if ( Eb.tp != Bool || Tb.tp != Bool )
+                               throw erro (" 'ou' com operandos não booleanos", ou);}
+Eb = tb                  {Nterm Eb = Tb}
+
+Tb = Tb 'e' Fb          {Nterm Tb; Tb.tp = Bool; Tb.nome = geraTemp();
+                          if ( Tb.tp != Bool || Fb.tp != Bool)
+                               throw erro (" 'e' com operandos não booleanos", e);}
+Tb = Fb                  {Nterm Tb = fb}
+
+Fb = 'not' Fb           {Nterm Fb; Fb.tp = Bool; Fb.nome = geraTemp();
+                          if ( Fb1.tp != Bool )
+                               throw erro (" 'not' com operando não booleano", not);}
+Fb = Er                 {Nterm Fb = Er}
+
+
+
+
